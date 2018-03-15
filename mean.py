@@ -33,7 +33,7 @@ if __name__ == "__main__":
     mean *= 1.0/n
     print(mean)
     with open(args.output,'w') as json_file:
-        json_file.write( json.dump(  {"RGB" : mean } ) )
+        json_file.write( json.dumps(  {"R" : mean[0] , "G" :mean[1] , "B" :mean[2] } ) )
         
 
 

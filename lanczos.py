@@ -51,4 +51,4 @@ if __name__ == "__main__":
                 os.mkdir(args.output_dir + "/" + t[-2])
         else:
             name = t[-1]
-        img.resize( ( args.width , args.height ) , PIL.Image.BICUBIC ).save( args.output_dir + "/" + name )
+        img.resize( ( args.width , args.height ) , PIL.Image.ANTIALIAS).save( args.output_dir + "/" + name )
