@@ -5,11 +5,9 @@ from tqdm import tqdm
 
 #BATCH_SIZE = 64 
 def parse_args():
-    parser = argparse.ArgumentParser( description = "lanczos" )
+    parser = argparse.ArgumentParser( description = "rotate_180degree" )
     parser.add_argument("-input_list")
     parser.add_argument("-output_dir")
-    parser.add_argument("-height",type=int ,help="output_height")
-    parser.add_argument("-width",type = int , help="output_width")
     flag_parser = parser.add_mutually_exclusive_group(required=False)#whether the input images are in the format of label1/img1 label2/img2
     flag_parser.add_argument("--folder",dest='folder',action="store_true")
     flag_parser.add_argument("--nofolder",dest='folder',action='store_false')
@@ -51,4 +49,5 @@ if __name__ == "__main__":
                 os.mkdir(args.output_dir + "/" + t[-2])
         else:
             name = t[-1]
-        img.resize( ( args.width , args.height ) , PIL.Image.ANTIALIAS).save( args.output_dir + "/" + name )
+        img.transpose(  PIL.Image.ROTATE_180 )
+        img.save( args.output_dir + "/" + name )
